@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Demo 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2 id="changer">Change Me!</h2>
+        <div id="enterInfo">
+            <b>Enter A HTML Color Name! </b>
+            <p><input type="text" id="txtBox" /></p>
+            <button type="button" onclick="doSomeStuff()" >Go!</button>
+            <button type="button" onclick="loopOverStuff()">Seperate The Header</button>
+            <div id="looper"></div>
+        </div>
+        <div id="output">
+            
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script>
+            function changeColor(val){
+                return confirm("Would you like the color of the header to "+ val+" ?");
+            }
+            $('h2').on('click', function(){
+               
+                var txt = '<div style="color:purple;float:right;text-align:center;">You have created a div!</div>'
+                
+            });
+            function doSomeStuff(){
+                var input = $('#txtBox').val();
+                if(changeColor(input)){
+                   $('#changer').css('color', input);
+                   $('#changer').text("I changed! My RGB code: " + $('#changer').css('color'));
+                   $('#changer').css('text-shadow', '1px 2px 2px gray');
+               }
+               
+            }
+         function loopOverStuff(){
+             $('#looper').html("");
+             var txt = $('#changer').text();
+             var splitted = txt.split('');
+             for(i=0; i < splitted.length; i++){
+                 if(splitted[i] !== ""){
+                     $('#looper').html($('#looper').html()+'<p>'+splitted[i]+'</p>');
+                 }
+                 
+             }
+         }
+     
+            </script>
+    </body>
+</html>
